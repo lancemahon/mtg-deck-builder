@@ -1,10 +1,12 @@
 import React from 'react'
 import { Route, withRouter } from 'react-router-dom'
 import CardsComponent from '../Cards/CardsComponent.js'
+import Background from '../shared/Background.js'
 
 const App = props => (
   <React.Fragment>
     <h3>{props.location.state ? props.location.state.msg : null}</h3>
+    <Route path='/' component={Background} />
     <Route exact path='/cards' component={CardsComponent} />
   </React.Fragment>
 )
