@@ -9,9 +9,10 @@ const Cards = ({ user }) => {
   const [query, setQuery] = useState({ name: '', manaCost: '', cmc: '', colors: '', type: '', supertypes: '', types: '', subTypes: '', rarity: '', set: '', text: '', artist: '', power: null, toughness: null })
 
   const cardsJsx = cards.map(card => (
-    <div key={card._id}>
+    <div key={card.id}>
       <h4>{card.name}</h4>
-      <p>id: {card._id}</p>
+      <p>id: {card.id}</p>
+      <img src={card.imageUrl} />
     </div>
   ))
 
@@ -26,12 +27,12 @@ const Cards = ({ user }) => {
       } else {
         queryParams[property] = query[property]
       }
-      mtg.card.where(queryParams)
-        .then(cards => {
-          setCards(cards)
-          console.log(cards[0].name) // "Squee, Goblin Nabob"
-        })
     }
+    mtg.card.where(queryParams)
+      .then(cards => {
+        setCards(cards)
+        // console.log(cards[0].name) // "Squee, Goblin Nabob"
+      })
   }
 
   const handleChange = (event) => {
