@@ -1,6 +1,6 @@
 let apiUrl
 const apiUrls = {
-  production: 'https://aqueous-atoll-85096.herokuapp.com',
+  production: 'https://api.magicthegathering.io/v1',
   development: 'http://localhost:4741'
 }
 
