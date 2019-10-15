@@ -15,7 +15,7 @@ const Cards = ({ user }) => {
   ))
 
   const cardsJsx = cards.map(card => (
-    <span   key={card.id}>
+    <span key={card.id}>
       <h4>{card.name}</h4>
       <p>id: {card.id}</p>
       <img src={card.imageUrl} />

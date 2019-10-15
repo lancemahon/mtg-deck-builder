@@ -1,15 +1,53 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Route, withRouter } from 'react-router-dom'
 import CardsComponent from '../Cards/CardsComponent.js'
-import Background from '../shared/Background.js'
+import AuthenticatedRoute from '../AuthenticatedRoute/AuthenticatedRoute.js'
+import SignUp from '../SignUp/SignUp.js'
+import SignIn from '../SignIn/SignIn.js'
+import SignOut from '../SignOut/SignOut.js'
+import ChangePassword from '../ChangePassword/ChangePassword.js'
 
-const App = props => (
-  <React.Fragment>
-    <h3>{props.location.state ? props.location.state.msg : null}</h3>
-    <Route path='/' component={Background} />
-    <Route exact path='/cards' component={CardsComponent} />
-  </React.Fragment>
-)
+const App = props => {
+  const [user, setUser] = useState(null)
+  const [alerts, setAlerts] = useState([])
+
+  const clearUser = () => {
+    setUser(null)
+  }
+
+  const alertSetter = ({ heading, message, variant }) => {
+    setAlerts({ alerts: [...alerts, { heading, message, variant }] })
+  }
+
+  // const alert = ({ heading, message, variant }) => {
+  //   setAlerts({ alerts: [...this.state.alerts, { heading, message, variant }] })
+  // }
+
+  return (
+    <div>
+      <div>
+        <h3>{props.location.state ? props.location.state.msg : null}</h3>
+        <Route exact path='/cards' component={CardsComponent} />
+      </div>
+      <div>
+        <main className="container">
+          <Route path='/sign-up' render={() => (
+            <SignUp alert={alertSetter} setUser={setUser} />
+          )} />
+          <Route path='/sign-in' render={() => (
+            <SignIn alert={alertSetter} setUser={setUser} />
+          )} />
+          <AuthenticatedRoute user={user} path='/sign-out' render={() => (
+            <SignOut alert={alertSetter} clearUser={clearUser} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} path='/change-password' render={() => (
+            <ChangePassword alert={alertSetter} user={user} />
+          )} />
+        </main>
+      </div>
+    </div>
+  )
+}
 
 export default withRouter(App)
 
