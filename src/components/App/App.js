@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import { Route, withRouter } from 'react-router-dom'
 import CardsComponent from '../Cards/CardsComponent.js'
+import Decks from '../Decks/DecksComponent.js'
 import AuthenticatedRoute from '../AuthenticatedRoute/AuthenticatedRoute.js'
 import SignUp from '../SignUp/SignUp.js'
 import SignIn from '../SignIn/SignIn.js'
 import SignOut from '../SignOut/SignOut.js'
 import ChangePassword from '../ChangePassword/ChangePassword.js'
+// import Home from '../shared/Home.js'
 
 const App = props => {
   const [user, setUser] = useState(null)
@@ -24,13 +26,18 @@ const App = props => {
   // }
 
   return (
-    <div>
+    <div style={{ backgroundColor: 'gray' }}>
       <div>
         <h3>{props.location.state ? props.location.state.msg : null}</h3>
-        <Route exact path='/cards' component={CardsComponent} />
-      </div>
-      <div>
-        <main className="container">
+        <main className="container" >
+          <Route exact path='/cards' render={() => (
+            <CardsComponent />
+          )} />
+          <Route exact path='/decks' render={() => (
+            <Decks
+              user={user}
+            />
+          )} />
           <Route path='/sign-up' render={() => (
             <SignUp alert={alertSetter} setUser={setUser} />
           )} />
