@@ -10,6 +10,7 @@ const Home = (props) => {
       { props.user
         ? <span>
           <Link to='/cards' type="button">Search cards</Link>
+          <Link to='/new-deck' type="button">New deck</Link>
         </span>
         : <span>
           <span>

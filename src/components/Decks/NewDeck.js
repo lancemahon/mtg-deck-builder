@@ -20,7 +20,9 @@ const NewDeck = (props) => {
   }
 
   const makeNewDeck = () => {
-  // making api request to POST
+    event.persist()
+    event.preventDefault()
+    // making api request to POST
     axios({
       method: 'POST',
       url: `${apiUrl}/decks/create`,
@@ -47,6 +49,19 @@ const NewDeck = (props) => {
           name="name"
           onChange={handleChange}
         />
+        <input
+          placeholder="White, Blue, Black, Red, Green"
+          value={formData.colors}
+          name="colors"
+          onChange={handleChange}
+        />
+        <input
+          placeholder="commander"
+          value={formData.format}
+          name="format"
+          onChange={handleChange}
+        />
+        <button type="submit">Create</button>
       </Form>
     </React.Fragment>
   )
