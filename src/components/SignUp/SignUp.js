@@ -26,6 +26,7 @@ class SignUp extends Component {
     event.preventDefault()
 
     const { alert, history, setUser } = this.props
+    console.log('alert is: ', alert)
 
     signUp(this.state)
       .then(() => signIn(this.state))

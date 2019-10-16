@@ -7,7 +7,8 @@ import SignUp from '../SignUp/SignUp.js'
 import SignIn from '../SignIn/SignIn.js'
 import SignOut from '../SignOut/SignOut.js'
 import ChangePassword from '../ChangePassword/ChangePassword.js'
-// import Home from '../shared/Home.js'
+import Home from '../shared/Home.js'
+import NewDeck from '../Decks/NewDeck.js'
 
 const App = props => {
   const [user, setUser] = useState(null)
@@ -30,6 +31,13 @@ const App = props => {
       <div>
         <h3>{props.location.state ? props.location.state.msg : null}</h3>
         <main className="container" >
+          <Route exact path='/' render={() => (
+            <Home
+              user={user}
+              alert={alertSetter}
+              setUser={setUser}
+            />
+          )} />
           <Route exact path='/cards' render={() => (
             <CardsComponent />
           )} />
@@ -37,6 +45,9 @@ const App = props => {
             <Decks
               user={user}
             />
+          )} />
+          <Route path ='/new-deck' render={() => (
+            <NewDeck />
           )} />
           <Route path='/sign-up' render={() => (
             <SignUp alert={alertSetter} setUser={setUser} />

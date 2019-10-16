@@ -25,6 +25,7 @@ class SignIn extends Component {
     event.preventDefault()
 
     const { alert, history, setUser } = this.props
+    console.log('alert is: ', alert)
 
     signIn(this.state)
       .then(res => setUser(res.data.user))
@@ -36,6 +37,7 @@ class SignIn extends Component {
       .then(() => history.push('/'))
       .catch(error => {
         console.error(error)
+        // console.log('alert is :', alert)
         this.setState({ email: '', password: '' })
         alert({
           heading: 'Sign In Failed',
