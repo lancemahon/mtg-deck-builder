@@ -59,7 +59,7 @@ const addCardForm = (props, { deckLists, user, card }) => {
     <Form onSubmit={addCard}>
       <select name="decklist" onChange={handleChange}>
         <option key='dropdown-default'>Choose a Deck</option>
-        {deckLists}
+        {props.deckLists}
       </select>
       <button type='submit' className='btn btn-primary'>Add to the deck!</button>
     </Form>

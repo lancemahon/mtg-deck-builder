@@ -45,7 +45,9 @@ const App = props => {
             />
           )} />
           <Route exact path ='/new-deck' render={(props) => (
-            <NewDeck />
+            <NewDeck
+              user={user}
+            />
           )} />
           <Route path='/sign-up' render={() => (
             <SignUp alert={alertSetter} setUser={setUser} />

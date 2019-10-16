@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import SearchBar from './searchBarComponent.js'
 import AddCardForm from './addCardForm.js'
-import Decks from '../Decks/Decks.js'
+// import Decks from '../Decks/Decks.js'
 // import axios from 'axios'
 // import apiUrl from '../../apiConfig.js'
 const mtg = require('mtgsdk')
@@ -10,7 +10,7 @@ const Cards = (props) => {
   const [cards, setCards] = useState([])
   const [query, setQuery] = useState({ name: '', manaCost: '', cmc: '', colors: '', type: '', supertypes: '', types: '', subTypes: '', rarity: '', set: '', text: '', artist: '', power: null, toughness: null })
 
-  const decks = Decks.responseData
+  const decks = ['Yawgmoth', 'Dinosaurs', 'Voltron', 'Vampires', 'Lands Matter', 'Green Stompy', 'Hydras', 'Ninjas', 'Sea Monsters', 'Eldrazi', 'Trostani', 'Golos', 'Chainer', 'Dwarves']
 
   const deckLists = decks.map(deck => (
     <option key={deck.id}>{deck}</option>

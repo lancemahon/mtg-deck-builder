@@ -9,7 +9,7 @@ const Home = (props) => {
       <h1>Welcome to MTG Deck Builder</h1>
       { props.user
         ? <span>
-          <Link to='/new-deck' type="button">Make a new deck</Link>
+          <Link to='/cards' type="button">Search cards</Link>
         </span>
         : <span>
           <span>
