@@ -22,10 +22,6 @@ const App = props => {
     setAlerts({ alerts: [...alerts, { heading, message, variant }] })
   }
 
-  // const alert = ({ heading, message, variant }) => {
-  //   setAlerts({ alerts: [...this.state.alerts, { heading, message, variant }] })
-  // }
-
   return (
     <div style={{ backgroundColor: 'gray' }}>
       <div>
@@ -39,14 +35,16 @@ const App = props => {
             />
           )} />
           <Route exact path='/cards' render={() => (
-            <CardsComponent />
+            <CardsComponent
+              user={user}
+            />
           )} />
           <Route exact path='/decks' render={() => (
             <Decks
               user={user}
             />
           )} />
-          <Route path ='/new-deck' render={() => (
+          <Route exact path ='/new-deck' render={(props) => (
             <NewDeck />
           )} />
           <Route path='/sign-up' render={() => (

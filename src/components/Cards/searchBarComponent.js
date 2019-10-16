@@ -1,4 +1,5 @@
 import React from 'react'
+import Form from 'react-bootstrap/Form'
 // import axios from 'axios'
 // import apiUrl from '../../apiConfig.js'
 
@@ -37,7 +38,7 @@ const SearchBar = ({ query, handleSubmit, handleChange }) => {
   // }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit}>
       <label>Name</label>
       <input
         placeholder="Snapcaster Mage"
@@ -75,7 +76,7 @@ const SearchBar = ({ query, handleSubmit, handleChange }) => {
       </select>
       <br />
       <button type="submit">Submit</button>
-    </form>
+    </Form>
   )
 }
 

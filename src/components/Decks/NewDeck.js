@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import SearchBar from '../Cards/searchBarComponent.js'
+import AddCardForm from '../Cards/addCardForm.js'
+
 const mtg = require('mtgsdk')
 
 const NewDeck = () => {
@@ -18,11 +20,10 @@ const NewDeck = () => {
       <p>id: {card.id}</p>
       <img src={card.imageUrl} />
       <br />
-      <select name="decklist">
-        <option key='dropdown-default'>Choose a Deck</option>
-        {deckLists}
-      </select>
-      <button className='btn btn-primary'>Add to the deck!</button>
+      <AddCardForm
+        deckLists={deckLists}
+        card={card}
+      />
     </span>
   ))
 

@@ -1,14 +1,16 @@
 import React, { useState } from 'react'
 import SearchBar from './searchBarComponent.js'
+import AddCardForm from './addCardForm.js'
+import Decks from '../Decks/Decks.js'
 // import axios from 'axios'
 // import apiUrl from '../../apiConfig.js'
 const mtg = require('mtgsdk')
 
-const Cards = ({ user }) => {
+const Cards = (props) => {
   const [cards, setCards] = useState([])
   const [query, setQuery] = useState({ name: '', manaCost: '', cmc: '', colors: '', type: '', supertypes: '', types: '', subTypes: '', rarity: '', set: '', text: '', artist: '', power: null, toughness: null })
 
-  const decks = ['Yawgmoth', 'Dinosaurs', 'Voltron', 'Vampires', 'Lands Matter', 'Green Stompy', 'Hydras', 'Ninjas', 'Sea Monsters', 'Eldrazi', 'Trostani', 'Golos', 'Chainer', 'Dwarves']
+  const decks = Decks.responseData
 
   const deckLists = decks.map(deck => (
     <option key={deck.id}>{deck}</option>
@@ -20,11 +22,11 @@ const Cards = ({ user }) => {
       <p>id: {card.id}</p>
       <img src={card.imageUrl} />
       <br />
-      <select name="decklist">
-        <option key='dropdown-default'>Choose a Deck</option>
-        {deckLists}
-      </select>
-      <button className='btn btn-primary'>Add to the deck!</button>
+      <AddCardForm
+        deckLists={deckLists}
+        card={card}
+        user={props.user}
+      />
     </span>
   ))
 
