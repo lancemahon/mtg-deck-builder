@@ -1,6 +1,6 @@
 {
   "name": "mtg-deck-builder",
-  "homepage": "https://<USERNAME>.github.io/<REPO NAME>",
+  "homepage": "https://lancemahon.github.io/mtg-deck-builder",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
