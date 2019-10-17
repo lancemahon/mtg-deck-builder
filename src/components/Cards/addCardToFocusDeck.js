@@ -58,6 +58,11 @@ const addCardToFocusDeckForm = (props, { deck, user, card }) => {
     const cardCmc = card.cmc
     const cardColors = card.colors
 
+    // map the cards into a new array, make sure the format is nice
+    const newArrayOfCards = deckCards.filter((card) => {
+
+    })
+
 
     // get the deck's cards into an array locally
     // then push the new card
