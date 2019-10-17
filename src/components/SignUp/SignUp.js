@@ -67,7 +67,7 @@ class SignUp extends Component {
                 onChange={this.handleChange}
               />
             </Form.Group>
-            <Form.Group controlId="password">
+            <Form.Group controlId="sign-up-password">
               <Form.Label>Password</Form.Label>
               <Form.Control
                 required
