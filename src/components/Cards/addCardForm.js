@@ -31,6 +31,7 @@ const addCardForm = (props, { deckLists, user, card }) => {
   const handleChange = (event) => {
     event.persist()
     const deckName = event.target.value
+    console.log('deckName is :', deckName)
     setDeck(decksLister[deckName])
 
     // GET the deck that matches deckName

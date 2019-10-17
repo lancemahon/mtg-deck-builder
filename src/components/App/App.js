@@ -9,6 +9,7 @@ import SignOut from '../SignOut/SignOut.js'
 import ChangePassword from '../ChangePassword/ChangePassword.js'
 import Home from '../shared/Home.js'
 import NewDeck from '../Decks/NewDeck.js'
+import Deck from '../Decks/Deck.js'
 
 const App = props => {
   const [user, setUser] = useState(null)
@@ -40,13 +41,19 @@ const App = props => {
             />
           )} />
           <Route exact path='/decks' render={() => (
-            <Decks
+            <Decks // uses DecksComponent
               user={user}
             />
           )} />
-          <Route exact path ='/new-deck' render={(props) => (
+          <Route exact path='/new-deck' render={() => (
             <NewDeck
               user={user}
+              testProp='this is a test prop'
+            />
+          )} />
+          <Route path='/decks/:id' render={() => (
+            <Deck
+              user={user} // I need to somehow pass 'deckId' into Deck... hmm...
             />
           )} />
           <Route path='/sign-up' render={() => (

@@ -2,13 +2,16 @@
 import axios from 'axios'
 import apiUrl from '../../apiConfig.js'
 
-const Decks = () => {
+const Decks = (props) => {
   const responseData = []
   console.log('response data inside Decks: ', responseData)
 
   axios({
     method: 'GET',
-    url: `${apiUrl}/decks`
+    url: `${apiUrl}/decks`,
+    headers: {
+      'Authorization': `Bearer ${props.user.token}`
+    }
   })
     .then(response => {
       responseData.push(response)

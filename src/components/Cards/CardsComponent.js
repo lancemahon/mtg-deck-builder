@@ -30,14 +30,6 @@ const Cards = (props) => {
     </span>
   ))
 
-  // const addCard = (event) => {
-  //   event.persist()
-  //   event.preventDefault()
-  //   axios.post({
-  //     url: `${apiUrl}/decks`
-  //   })
-  // }
-
   const handleSubmit = event => {
     event.persist()
     event.preventDefault()

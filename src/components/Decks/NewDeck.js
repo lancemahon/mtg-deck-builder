@@ -7,7 +7,7 @@ import axios from 'axios'
 
 // const mtg = require('mtgsdk')
 
-const NewDeck = (props) => {
+const NewDeck = ({ user, testProp }) => {
   // want to make this pop up when you click to make a new deck. It will mostly be for naming purposes.
   const [formData, setFormData] = useState({ name: '', colors: '', format: '' })
 
@@ -19,15 +19,15 @@ const NewDeck = (props) => {
     setFormData(editedFormData)
   }
 
-  const makeNewDeck = () => {
+  const makeNewDeck = (event) => {
     event.persist()
     event.preventDefault()
     // making api request to POST
     axios({
       method: 'POST',
-      url: `${apiUrl}/decks/create`,
+      url: `${apiUrl}/decks`,
       headers: {
-        Authorization: `Bearer ${props.user.token}`
+        'Authorization': `Bearer ${user.token}`
       },
       data: {
         deck: {
@@ -42,7 +42,7 @@ const NewDeck = (props) => {
   return (
     <React.Fragment>
       <Form onSubmit={makeNewDeck}>
-        <label>Name</label>
+        <label>{testProp}</label>
         <input
           placeholder="Green Stompy"
           value={formData.name}
@@ -61,7 +61,7 @@ const NewDeck = (props) => {
           name="format"
           onChange={handleChange}
         />
-        <button type="submit">Create</button>
+        <button type="submit" className="btn btn-primary">Create</button>
       </Form>
     </React.Fragment>
   )

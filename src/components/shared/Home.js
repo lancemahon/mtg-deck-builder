@@ -11,6 +11,7 @@ const Home = (props) => {
         ? <span>
           <Link to='/cards' type="button">Search cards</Link>
           <Link to='/new-deck' type="button">New deck</Link>
+          <Link to='/decks' type="button">See your decks</Link>
         </span>
         : <span>
           <span>
