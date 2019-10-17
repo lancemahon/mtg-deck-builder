@@ -22,7 +22,7 @@ const UpdateDeckForm = ({ user, focusDeck }) => {
   const updateDeck = (event) => {
     event.persist()
     event.preventDefault()
-    // making api request to POST
+    // making api request to PATCH
     axios({
       method: 'PATCH',
       url: `${apiUrl}/decks/${focusDeck._id}`,
@@ -33,7 +33,8 @@ const UpdateDeckForm = ({ user, focusDeck }) => {
         deck: {
           name: formData.name,
           colors: formData.colors,
-          format: formData.format
+          format: formData.format,
+          cards: focusDeck.cards
         }
       }
     })

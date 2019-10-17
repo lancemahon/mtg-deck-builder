@@ -33,7 +33,8 @@ const NewDeck = ({ user }) => {
         deck: {
           name: formData.name,
           colors: formData.colors,
-          format: formData.format
+          format: formData.format,
+          cards: [null]
         }
       }
     })
