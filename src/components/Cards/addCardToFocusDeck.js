@@ -6,7 +6,6 @@ import apiUrl from '../../apiConfig'
 
 const addCardToFocusDeckForm = (props, { deck, user, card }) => {
   console.log('apiUrl is ', apiUrl)
-  const card = props.card
   let deckCards = []
   if (props.deck.cards) {
     deckCards.push(props.deck.cards)
@@ -52,17 +51,16 @@ const addCardToFocusDeckForm = (props, { deck, user, card }) => {
     console.log('props.deck.name is ', props.deck.name)
     console.log('props.card is ', card)
     // change 'card' into a form that my server likes
-    const cardId = card._id
-    const cardName = card.name
-    const cardManaCost = card.manaCost
-    const cardCmc = card.cmc
-    const cardColors = card.colors
-
-    // map the cards into a new array, make sure the format is nice
-    const newArrayOfCards = deckCards.filter((card) => {
-
-    })
-
+    // const cardId = card._id
+    // const cardName = card.name
+    // const cardManaCost = card.manaCost
+    // const cardCmc = card.cmc
+    // const cardColors = card.colors
+    //
+    // // map the cards into a new array, make sure the format is nice
+    // const newArrayOfCards = deckCards.filter((card) => {
+    //
+    // })
 
     // get the deck's cards into an array locally
     // then push the new card
