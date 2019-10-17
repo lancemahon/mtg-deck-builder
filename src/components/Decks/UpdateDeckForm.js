@@ -7,7 +7,7 @@ import axios from 'axios'
 
 // const mtg = require('mtgsdk')
 
-const NewDeck = ({ user }) => {
+const UpdateDeckForm = ({ user, focusDeck }) => {
   // want to make this pop up when you click to make a new deck. It will mostly be for naming purposes.
   const [formData, setFormData] = useState({ name: '', colors: '', format: '' })
 
@@ -19,13 +19,13 @@ const NewDeck = ({ user }) => {
     setFormData(editedFormData)
   }
 
-  const makeNewDeck = (event) => {
+  const updateDeck = (event) => {
     event.persist()
     event.preventDefault()
     // making api request to POST
     axios({
-      method: 'POST',
-      url: `${apiUrl}/decks`,
+      method: 'PATCH',
+      url: `${apiUrl}/decks/${focusDeck._id}`,
       headers: {
         'Authorization': `Bearer ${user.token}`
       },
@@ -41,32 +41,32 @@ const NewDeck = ({ user }) => {
 
   return (
     <React.Fragment>
-      <Form onSubmit={makeNewDeck}>
+      <Form onSubmit={updateDeck}>
         <label>Name</label>
         <input
-          placeholder="Green Stompy"
+          placeholder={`${focusDeck.name}`}
           value={formData.name}
           name="name"
           onChange={handleChange}
         />
         <label>Colors</label>
         <input
-          placeholder="White, Blue, Black, Red, Green"
+          placeholder={`${focusDeck.colors}`}
           value={formData.colors}
           name="colors"
           onChange={handleChange}
         />
         <label>Format</label>
         <input
-          placeholder="commander"
+          placeholder={`${focusDeck.format}`}
           value={formData.format}
           name="format"
           onChange={handleChange}
         />
-        <button type="submit" className="btn btn-primary">Create</button>
+        <button type="submit" className="btn btn-primary">Update</button>
       </Form>
     </React.Fragment>
   )
 }
 
-export default NewDeck
+export default UpdateDeckForm
