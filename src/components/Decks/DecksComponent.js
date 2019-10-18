@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import apiUrl from '../../apiConfig.js'
-import AddCardButton from '../Cards/addCardToFocusDeck.js'
+import AddCardForm from '../Cards/addCardToFocusDeck.js'
 import SearchBar from '../Cards/searchBarComponent.js'
 import UpdateDeckForm from './UpdateDeckForm.js'
 import { Link } from 'react-router-dom'
@@ -56,7 +56,7 @@ const Decks = ({ user }) => {
       <p>id: {card.id}</p>
       <img src={card.imageUrl} />
       <br />
-      <AddCardButton
+      <AddCardForm
         deck={focusDeck}
         card={card}
         user={user}
@@ -163,7 +163,7 @@ const Decks = ({ user }) => {
         <h4>Updating {focusDeck.name}</h4>
         <UpdateDeckForm
           user={user}
-          deck={focusDeck}
+          focusDeck={focusDeck}
         />
       </React.Fragment>
     )
