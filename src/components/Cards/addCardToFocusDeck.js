@@ -4,11 +4,17 @@ import axios from 'axios'
 import apiUrl from '../../apiConfig'
 // import Decks from '../Decks/Decks.js'
 
-const addCardToFocusDeckForm = (props, { deck, user, card }) => {
-  console.log('apiUrl is ', apiUrl)
+const addCardButton = (props, { deck, user, card }) => {
+  // I want to grab just the imageUrl out of 'card':
+  let cardArt = ''
+  if (props.card.imageUrl) { // just to make sure it exists
+    cardArt = props.card.imageUrl
+  }
   let deckCards = []
   if (props.deck.cards) {
-    deckCards.push(props.deck.cards)
+    for (card in props.deck.cards) {
+      deckCards.push(card)
+    }
   }
   // const decksLister = () => {
   //   const listOfDecks = []
@@ -50,6 +56,7 @@ const addCardToFocusDeckForm = (props, { deck, user, card }) => {
     console.log('props.deck is ', props.deck)
     console.log('props.deck.name is ', props.deck.name)
     console.log('props.card is ', props.card)
+    console.log('props.card.imageUrl is ', props.card.imageUrl)
     // change 'card' into a form that my server likes
     // const cardId = card._id
     // const cardName = card.name
@@ -64,12 +71,12 @@ const addCardToFocusDeckForm = (props, { deck, user, card }) => {
 
     // get the deck's cards into an array locally
     // then push the new card
-    if (deckCards.length !== 0) { // if there are already cards
-      deckCards.push(props.card) // push `card`
-    } else { // if there are no cards yet
-      deckCards = [props.card] // then deckCards will just be `card`
+    if (deckCards.length === 0) { // if there are no cards yet
+      deckCards = [cardArt] // then deckCards will just be `card`
+    } else { // if there are cards already
+      deckCards.push(cardArt) // push `card`
     }
-
+    console.log('deckCards: ', deckCards)
     // add 'card' into the 'cards' field of the copy
     // make patch request with new deck data
     axios({
@@ -79,62 +86,12 @@ const addCardToFocusDeckForm = (props, { deck, user, card }) => {
         'Authorization': `Bearer ${props.user.token}`
       },
       data: {
-        cards: deckCards
+        deck: {
+          cards: deckCards
+        }
       }
     })
   }
-
-  //   id: {
-  //   type: String
-  // },
-  // name: {
-  //   type: String,
-  //   required: true
-  // },
-  // manaCost: {
-  //   type: String,
-  //   required: true
-  // },
-  // cmc: {
-  //   type: Number,
-  //   required: true
-  // },
-  // colors: {
-  //   type: Array,
-  //   required: true
-  // },
-  // type: {
-  //   type: String
-  // },
-  // supertypes: {
-  //   type: String
-  // },
-  // types: {
-  //   type: String
-  // },
-  // subTypes: {
-  //   type: String
-  // },
-  // rarity: {
-  //   type: String,
-  //   required: true
-  // },
-  // set: {
-  //   type: String,
-  //   required: true
-  // },
-  // text: {
-  //   type: String
-  // },
-  // artist: {
-  //   type: String
-  // },
-  // power: {
-  //   type: Number
-  // },
-  // toughness: {
-  //   type: Number
-  // }
 
   return (
     <Form onSubmit={addCard}>
@@ -143,4 +100,4 @@ const addCardToFocusDeckForm = (props, { deck, user, card }) => {
   )
 }
 
-export default addCardToFocusDeckForm
+export default addCardButton
