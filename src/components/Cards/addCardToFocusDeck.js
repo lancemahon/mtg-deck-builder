@@ -49,7 +49,7 @@ const addCardToFocusDeckForm = (props, { deck, user, card }) => {
     event.preventDefault()
     console.log('props.deck is ', props.deck)
     console.log('props.deck.name is ', props.deck.name)
-    console.log('props.card is ', card)
+    console.log('props.card is ', props.card)
     // change 'card' into a form that my server likes
     // const cardId = card._id
     // const cardName = card.name
