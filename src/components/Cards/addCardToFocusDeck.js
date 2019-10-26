@@ -1,15 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Form from 'react-bootstrap/Form'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
 // import Decks from '../Decks/Decks.js'
 
 const addCardToFocusDeckForm = (props, { deck, user, card }) => {
+  const [cardAdded, setCardAdded] = useState(false)
   // I want to grab just the imageUrl out of 'card':
   let cardArt = ''
   if (props.card.imageUrl) { // just to make sure it exists
     cardArt = props.card.imageUrl
   }
+
   console.log('Deck prop: ', props.deck)
   let deckCards = []
   console.log('first one, deckCards: ', deckCards)
@@ -79,8 +81,19 @@ const addCardToFocusDeckForm = (props, { deck, user, card }) => {
         }
       }
     })
+      .then(setCardAdded(true))
   }
 
+  if (cardAdded) { // will render when you click 'Add to the deck!'
+    return (
+      <React.Fragment>
+        <h4>Added to {props.deck.name}</h4>
+        <Form onSubmit={addCard}>
+          <button type='submit' className='btn btn-primary'>Add to the deck!</button>
+        </Form>
+      </React.Fragment>
+    )
+  }
   return (
     <Form onSubmit={addCard}>
       <button type='submit' className='btn btn-primary'>Add to the deck!</button>
