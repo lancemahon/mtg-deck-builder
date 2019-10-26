@@ -25,7 +25,7 @@ class SignIn extends Component {
     event.preventDefault()
 
     const { alert, history, setUser } = this.props
-    console.log('alert is: ', alert)
+    // console.log('alert is: ', alert)
 
     signIn(this.state)
       .then(res => setUser(res.data.user))

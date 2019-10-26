@@ -44,11 +44,11 @@ const Decks = ({ user }) => {
   )
 
   for (let i = 0; i < decks.length; i++) {
-    console.log('deck.owner: ', decks[i].owner)
+    // console.log('deck.owner: ', decks[i].owner)
   }
 
-  console.log('ownedDecks: ', ownedDecks)
-  console.log('user._id: ', user._id)
+  // console.log('ownedDecks: ', ownedDecks)
+  // console.log('user._id: ', user._id)
 
   const decksJsx = ownedDecks.map(deck => (
     <React.Fragment key={deck._id}>

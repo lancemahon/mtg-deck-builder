@@ -4,7 +4,7 @@ import axios from 'axios'
 
 const Deck = ({ user, deckId }) => {
   // const [deck, setDeck] = useState()
-  console.log('in Deck, user is :', user)
+  // console.log('in Deck, user is :', user)
 
   useEffect(() => {
     axios({
