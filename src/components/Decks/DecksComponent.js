@@ -5,6 +5,7 @@ import AddCardForm from '../Cards/addCardToFocusDeck.js'
 import SearchBar from '../Cards/searchBarComponent.js'
 import UpdateDeckForm from './UpdateDeckForm.js'
 import { Link } from 'react-router-dom'
+import LinkHome from '../shared/LinkHome.js'
 const mtg = require('mtgsdk')
 
 const Decks = ({ user }) => {
@@ -39,7 +40,17 @@ const Decks = ({ user }) => {
   }
 
   // this is the actual list of decks, with buttons that focus each deck
-  const decksJsx = decks.map(deck => (
+  const ownedDecks = decks.filter(deck => deck.owner === user._id
+  )
+
+  for (let i = 0; i < decks.length; i++) {
+    // console.log('deck.owner: ', decks[i].owner)
+  }
+
+  // console.log('ownedDecks: ', ownedDecks)
+  // console.log('user._id: ', user._id)
+
+  const decksJsx = ownedDecks.map(deck => (
     <React.Fragment key={deck._id}>
       <button type="button" onClick={() => {
         toggleClicked(deck)
@@ -66,7 +77,9 @@ const Decks = ({ user }) => {
 
   // haven't seen this show up, weird
   const newDeckButtonJsx = () => (
-    <Link to='/new-deck' type="button">New deck</Link>
+    <span>
+      <Link to='/new-deck' type="button">New deck</Link>
+    </span>
   )
 
   // Here all the cards display
@@ -131,11 +144,13 @@ const Decks = ({ user }) => {
       <div>
         {newDeckButtonJsx}
         {decksJsx}
+        <LinkHome />
       </div>
     )
   } else if (!updateClicked) {
     return (
       <React.Fragment>
+        <LinkHome />
         <h1>
           {focusDeck.name}
         </h1>
@@ -164,6 +179,7 @@ const Decks = ({ user }) => {
   } else {
     return (
       <React.Fragment>
+        <LinkHome />
         <h4>Updating {focusDeck.name}</h4>
         <UpdateDeckForm
           user={user}
