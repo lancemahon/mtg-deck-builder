@@ -48,7 +48,6 @@ const App = props => {
           <Route exact path='/new-deck' render={() => (
             <NewDeck
               user={user}
-              testProp='this is a test prop'
             />
           )} />
           <Route path='/decks/:id' render={() => (

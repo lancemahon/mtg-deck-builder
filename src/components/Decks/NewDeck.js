@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Form from 'react-bootstrap/Form'
 import apiUrl from '../../apiConfig.js'
+import LinkHome from '../shared/LinkHome.js'
 import axios from 'axios'
 // import SearchBar from '../Cards/searchBarComponent.js'
 // import AddCardForm from '../Cards/addCardForm.js'
@@ -66,6 +67,7 @@ const NewDeck = ({ user }) => {
         />
         <button type="submit" className="btn btn-primary">Create</button>
       </Form>
+      <LinkHome />
     </React.Fragment>
   )
 }
