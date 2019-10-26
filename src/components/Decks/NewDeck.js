@@ -11,6 +11,7 @@ import axios from 'axios'
 const NewDeck = ({ user }) => {
   // want to make this pop up when you click to make a new deck. It will mostly be for naming purposes.
   const [formData, setFormData] = useState({ name: '', colors: '', format: '', cards: [] })
+  const [created, setCreated] = useState(false) // for feedback upon creation
 
   const handleChange = (event) => {
     event.persist()
@@ -39,6 +40,7 @@ const NewDeck = ({ user }) => {
         }
       }
     })
+      .then(setCreated(true))
   }
 
   return (
@@ -67,6 +69,10 @@ const NewDeck = ({ user }) => {
         />
         <button type="submit" className="btn btn-primary">Create</button>
       </Form>
+      { created
+        ? <h4>Created { formData.name }</h4>
+        : <br />
+      }
       <LinkHome />
     </React.Fragment>
   )

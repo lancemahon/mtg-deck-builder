@@ -17,6 +17,7 @@ const Decks = ({ user }) => {
   // this is also for SearchBar
   const [clicked, setClicked] = useState(false) // if we have selected a deck or not
   const [updateClicked, setUpdateClicked] = useState(false) // for getting the update form
+  const [deleted, setDeleted] = useState(false) // for redirecting upon deletion
 
   // get all the user's decks and set them with setDecks
   useEffect(() => {
@@ -35,20 +36,15 @@ const Decks = ({ user }) => {
   // this is how we know we are focusing a deck, and which deck
   const toggleClicked = (deck) => {
     setFocusDeck(deck)
+    console.log('in toggleClicked, focusDeck is: ', focusDeck)
     setDeckCards(deck.cards)
+    console.log('in toggleClicked, deck.cards is: ', deck.cards)
     setClicked(!clicked)
   }
 
   // this is the actual list of decks, with buttons that focus each deck
   const ownedDecks = decks.filter(deck => deck.owner === user._id
   )
-
-  for (let i = 0; i < decks.length; i++) {
-    // console.log('deck.owner: ', decks[i].owner)
-  }
-
-  // console.log('ownedDecks: ', ownedDecks)
-  // console.log('user._id: ', user._id)
 
   const decksJsx = ownedDecks.map(deck => (
     <React.Fragment key={deck._id}>
@@ -84,7 +80,6 @@ const Decks = ({ user }) => {
 
   // Here all the cards display
   const focusDeckJsx = () => (
-    // { if (clicked) {
     deckCards.map(card => (
       <React.Fragment key={`${deckCards.indexOf(card)}`}>
         <h4>Cards</h4>
@@ -106,6 +101,7 @@ const Decks = ({ user }) => {
         'Authorization': `Bearer ${user.token}`
       }
     })
+      .then(setDeleted(true))
   }
 
   const toggleUpdateClicked = () => {
@@ -147,7 +143,7 @@ const Decks = ({ user }) => {
         <LinkHome />
       </div>
     )
-  } else if (!updateClicked) {
+  } else if (!updateClicked && !deleted) {
     return (
       <React.Fragment>
         <LinkHome />
@@ -173,8 +169,22 @@ const Decks = ({ user }) => {
         <button type='button' className='btn btn-secondary' onClick={toggleUpdateClicked}>Update</button>
         <br />
         <h6>Delete this deck?</h6>
-        <button type='button' className='btn btn-danger' onClick={() => { deleteDeck(focusDeck._id) }}>Delete</button>
+        <button type='button' className='btn btn-danger' onClick={() => {
+          deleteDeck(focusDeck._id)
+          // setClicked(false)
+          // setDeleted(false)
+          // setCards([])
+          // setDeckCards([])
+          // setQuery({ name: '', manaCost: '', cmc: '', colors: '', type: '', supertypes: '', types: '', subTypes: '', rarity: '', set: '', text: '', artist: '', power: null, toughness: null })
+          // setUpdateClicked(false)
+        }}>Delete</button>
       </React.Fragment>
+    )
+  } else if (deleted) {
+    return (
+      <Decks
+        user={user}
+      />
     )
   } else {
     return (
