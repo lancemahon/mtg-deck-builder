@@ -42,17 +42,17 @@ Wireframes & Entity Relationship Diagram: https://imgur.com/a/lKaeMFJ
 Screenshot: https://imgur.com/a/bJZcpua
 
 User Stories:
-As a user, I want to be able to sign up with an email and password
-As a user, I want to be able to sign in with an email and password
-As a user, I want to be able to create a new deck
-As a user, I want to be able to view my decks
-As a user, I want to be able to delete a deck
-As a user, I want to be able to view a specific deck of mine
-As a user, I want to be able to search for cards to add to a deck
-As a user, I want to be able to remove cards from a deck of mine
-As a user, I want to be able to update details about a deck of mine
-As a user, I want to be able to sign out when signed in
-As a user, I want to be able to navigate between pages with buttons
+ - As a user, I want to be able to sign up with an email and password
+ - As a user, I want to be able to sign in with an email and password
+ - As a user, I want to be able to create a new deck
+ - As a user, I want to be able to view my decks
+ - As a user, I want to be able to delete a deck
+ - As a user, I want to be able to view a specific deck of mine
+ - As a user, I want to be able to search for cards to add to a deck
+ - As a user, I want to be able to remove cards from a deck of mine
+ - As a user, I want to be able to update details about a deck of mine
+ - As a user, I want to be able to sign out when signed in
+ - As a user, I want to be able to navigate between pages with buttons
 
 There are no dependencies, so no installations are required to run this app. A browser and internet connection are all that's needed.
 
