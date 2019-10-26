@@ -71,17 +71,17 @@ const Decks = ({ user }) => {
 
   // Here all the cards display
   const focusDeckJsx = () => (
-    { if (clicked) {
-      deckCards.map(card => (
-        <React.Fragment key={card.id}>
-          <h4>Cards</h4>
-          <span>
-            <div>{card.name}</div>
-          </span>
-        </React.Fragment>
-      ))
-    }
-    }
+    // { if (clicked) {
+    deckCards.map(card => (
+      <React.Fragment key={`${deckCards.indexOf(card)}`}>
+        <h4>Cards</h4>
+        <span>
+          <img src={`${card}`}/>
+        </span>
+      </React.Fragment>
+    ))
+    // }
+    // }
   )
 
   // self-explanatory?
@@ -136,9 +136,13 @@ const Decks = ({ user }) => {
   } else if (!updateClicked) {
     return (
       <React.Fragment>
-        {focusDeck.name}
+        <h1>
+          {focusDeck.name}
+        </h1>
         <br />
-        {focusDeckJsx}
+        <div>
+          {focusDeckJsx}
+        </div>
         <br />
         <div>
           <h1>Search</h1>
